@@ -359,6 +359,19 @@ const words = [
     const checkBtn = document.getElementById("checkBtn");
     const continueBtn = document.getElementById("continueBtn");
 
+    answerInput.addEventListener("keypress", function(e) {
+        if (e.key === "Enter") {
+            if (continueBtn.style.display === "inline-block") {
+            // If Continue button is visible, pressing Enter moves to next word
+            nextWord();
+            } else {
+            // Otherwise, check the answer
+            checkAnswer();
+            }
+        }
+    });
+
+
     function showWord() {
       if (savedIndex < shuffledWords.length) {
         wordDisplay.textContent = shuffledWords[savedIndex].en;
